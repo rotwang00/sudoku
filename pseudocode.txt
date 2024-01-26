@@ -1,0 +1,18 @@
+Rules
+
+9 x 9 grid of cells
+Each cell contains a digit 1-9
+Each cell is part of a row of 9 cells, each of which has a different digit
+Each cell is part of a column of 9 cells, each of which has a different digit
+Each cell is part of a zone of 9 cells in the form of a square, each of which has a different digit
+The two diagonals do not figure in basic sudoku
+
+Data structure
+
+Each cell contains this info:
+  int - Which row it belongs to
+  int - Which column it belongs to
+  int - Which zone it belongs to
+  bool - true if cell is solved
+  array - All possible values remaing
+
