@@ -1,18 +1,40 @@
 Rules
-
+=====
 9 x 9 grid of cells
 Each cell contains a digit 1-9
 Each cell is part of a row of 9 cells, each of which has a different digit
 Each cell is part of a column of 9 cells, each of which has a different digit
 Each cell is part of a zone of 9 cells in the form of a square, each of which has a different digit
-The two diagonals do not figure in basic sudoku
+The two diagonals do not figure into basic sudoku
 
 Data structure
+==============
+There are 81 cells. 
+Each cell is represented by an object.
+The obects are named `cell[number]` with numbers 1-81, starting at the top left of grid
+  and moving left to right, then top to bottom
 
-Each cell contains this info:
-  int - Which row it belongs to
-  int - Which column it belongs to
-  int - Which zone it belongs to
-  bool - true if cell is solved
-  array - All possible values remaing
+Each cell object contains this info:
+  int - Which row it belongs to (row)
+  int - Which column it belongs to (col)
+  int - Which zone it belongs to (zone)
+  bool - true if cell is solved (isSolved)
+  array - All possible values remaing (values)
 
+These cells are stored in an array
+
+Other variables:
+  int - count of number of unsolved cells (unsolvedCells)
+
+Program
+=======
+Create empty board
+Add starting state information
+
+Loop through all cells
+  For each cell:
+    Examine all other cells in row. If any other cells are solved, remove that value from values
+    Examine all other cells in column. If any other cells are solved, remove that value from values
+    Examine all other cells in zone. If any other cells are solved, remove that value from values
+    If number of values is one, set isSolved to true and decrement unsolvedCells
+  If unsolvedCells gets to zero, terminate loop
