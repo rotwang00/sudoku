@@ -18,6 +18,31 @@ const createBoard = function () {
   return newBoard;
 };
 
+const addDataToBoard = function (board, boardData) {
+  for (const [key, value] of Object.entries(boardData)) {
+    let numKey = parseInt(key);
+    // console.log(typeof numKey, typeof value);
+    board[numKey - 1].values = [value];
+    board[numKey - 1].isSolved = true;
+    unsolvedCells--;
+  }
+};
+
+const printBoard = function (board) {
+  for (let i = 0; i < 9; i++) {
+    let line = "";
+    for (let j = 0; j < 9; j++) {
+      let cellNumber = i * 9 + j;
+      if (board[cellNumber].isSolved) {
+        line += board[cellNumber].values[0];
+      } else {
+        line += "-";
+      }
+    }
+    console.log(line);
+  }
+};
+
 const boardData1 = {
   3: 5,
   4: 3,
@@ -58,5 +83,18 @@ const boardData1 = {
   76: 2,
 };
 
+let unsolvedCells = 81;
 let board = createBoard();
-console.dir(board);
+addDataToBoard(board, boardData1);
+
+while (unsolvedCells > 0) {
+  for (let i = 0; i < 9; i++) {
+    for (let j = 0; j < 9; j++) {
+      let cellNumber = i * 9 + j;
+      if (board[cellNumber].isSolved) next;
+    }
+  }
+}
+// printBoard(board);
+// console.dir(board);
+// console.log(unsolvedCells);
