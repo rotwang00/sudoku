@@ -15,9 +15,9 @@ The obects are named `cell[number]` with numbers 1-81, starting at the top left 
   and moving left to right, then top to bottom
 
 Each cell object contains this info:
-  int - Which row it belongs to (row)
-  int - Which column it belongs to (col)
-  int - Which zone it belongs to (zone)
+  int - Which row it belongs to, 1-9 (row)
+  int - Which column it belongs to, 1-9 (col)
+  int - Which zone it belongs to, 1-9 (zone)
   bool - true if cell is solved (isSolved)
   array - All possible values remaing (values)
 
